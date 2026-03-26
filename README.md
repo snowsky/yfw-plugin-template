@@ -18,7 +18,7 @@ Based on the same pattern as [yfw-crm](https://github.com/snowsky/yfw-crm).
 │   └── schemas/     # Pydantic models
 │
 ├── standalone/      # Standalone-specific infrastructure
-│   ├── config.py    # Settings (INVOICE_API_URL, INVOICE_API_KEY, storage)
+│   ├── config.py    # Settings (YFW_API_URL, YFW_API_KEY, storage)
 │   ├── auth.py      # API-key validation against YFW
 │   ├── database.py  # Optional DB (stateless if DATABASE_URL is empty)
 │   └── main.py      # FastAPI entry point
@@ -40,7 +40,7 @@ Based on the same pattern as [yfw-crm](https://github.com/snowsky/yfw-crm).
 
 ```bash
 cp .env.example .env
-# Edit .env: set INVOICE_API_URL and INVOICE_API_KEY
+# Edit .env: set YFW_API_URL and YFW_API_KEY
 
 # Backend
 pip install -r requirements.txt
@@ -83,7 +83,7 @@ git clone https://github.com/your-org/your-plugin my-plugin
 
 1. In YourFinanceWORKS: **Settings → API Access → Create Key**
    _(requires the `external_api` license feature)_
-2. Copy the `ak_...` key into your `.env` as `INVOICE_API_KEY`
+2. Copy the `ak_...` key into your `.env` as `YFW_API_KEY`
 
 ---
 
