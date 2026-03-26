@@ -1,0 +1,17 @@
+{
+  "name": "my-plugin",
+  "version": "1.0.0",
+  "description": "A YourFinanceWORKS plugin",
+  "author": "YourFinanceWORKS",
+  "license": "AGPLv3",
+  "license_tier": "agpl",
+  "database_tables": [],
+  "api_routes": [
+    {
+      "path": "/api/v1/my-plugin/hello",
+      "methods": ["GET"],
+      "description": "Example hello endpoint"
+    }
+  ],
+  "features": ["example"]
+}
