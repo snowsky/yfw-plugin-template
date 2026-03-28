@@ -13,6 +13,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["ui/shared", "ui/plugin"],
+  "include": ["ui/shared", "ui/plugin", "plugin/ui"],
   "exclude": ["node_modules", "ui/standalone"]
 }
