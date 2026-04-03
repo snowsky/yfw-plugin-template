@@ -1,25 +1,21 @@
 /**
  * ExamplePage — demonstrates calling the shared API.
- *
- * Replace this with your feature page.
- * Works in both plugin mode (mounted in the host app's router) and
- * standalone mode (mounted in ui/standalone/src/App.tsx).
  */
-import { useEffect, useState } from "react";
-import { pluginApi, type HelloResponse } from "../api";
+import React, { useEffect, useState } from "react"
+import { pluginApi, type HelloResponse } from "../api"
 
 export function ExamplePage() {
-  const [data, setData] = useState<HelloResponse | null>(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<HelloResponse | null>(null)
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     pluginApi
       .hello()
       .then(setData)
       .catch((e: Error) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false))
+  }, [])
 
   return (
     <div style={{ maxWidth: 640, margin: "48px auto", fontFamily: "sans-serif", padding: "0 16px" }}>
@@ -65,5 +61,5 @@ export function ExamplePage() {
         </div>
       )}
     </div>
-  );
+  )
 }

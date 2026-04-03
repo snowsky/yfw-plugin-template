@@ -1,13 +1,4 @@
-/**
- * SetupPage — configure the YourFinanceWORKS API URL and API key.
- *
- * Shown only in standalone mode. In plugin mode the host app handles auth.
- *
- * To obtain an API key:
- *   YourFinanceWORKS → Settings → API Access → Create Key
- *   (requires the "external_api" license feature to be enabled)
- */
-import { useState } from "react";
+import React, { useState } from "react";
 import type { CSSProperties } from "react";
 import { loadSetupConfig, saveSetupConfig, testConnection } from "../api";
 

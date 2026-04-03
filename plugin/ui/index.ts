@@ -1,27 +1,14 @@
 /**
  * Plugin frontend entry point.
  *
- * Consumed by YourFinanceWORKS via import.meta.glob("./plugins/[*]/index.ts").
- * Must export: pluginRoutes, navItems, pluginIcons, pluginMetadata.
+ * Consumed by YourFinanceWORKS's plugin system (ui/src/App.tsx glob import).
+ * Exports pluginRoutes, navItems, and pluginMetadata.
  *
- * Pages are lazy-loaded from ./pages/ — co-located here so the installed
- * plugin/ui/ directory is fully self-contained.
+ * Pages are imported from ui/shared/pages/ — no duplication with standalone.
  */
 import React from "react";
-import { Puzzle } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import type { PluginRouteConfig, PluginNavItem } from "@/types/plugin-routes";
 
-// ---------------------------------------------------------------------------
-// Page component (lazy — loaded only when the user navigates to the route)
-// ---------------------------------------------------------------------------
-const ExamplePage = React.lazy(() =>
-  import("./pages/ExamplePage").then((m) => ({ default: m.ExamplePage }))
-);
-
-// ---------------------------------------------------------------------------
-// Plugin metadata
-// ---------------------------------------------------------------------------
 export const pluginMetadata = {
   name: "my-plugin",
   displayName: "My Plugin",
@@ -30,9 +17,11 @@ export const pluginMetadata = {
   description: "A YourFinanceWORKS plugin built from the template.",
 };
 
-// ---------------------------------------------------------------------------
-// Route configuration
-// ---------------------------------------------------------------------------
+// Lazy-load from shared pages — adjust the relative path if your ui/ is nested differently
+const ExamplePage = React.lazy(() =>
+  import("../../shared/ui/pages/ExamplePage").then((m) => ({ default: m.ExamplePage }))
+);
+
 export const pluginRoutes: PluginRouteConfig[] = [
   {
     path: "/my-plugin/example",
@@ -43,28 +32,14 @@ export const pluginRoutes: PluginRouteConfig[] = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Sidebar nav item
-// ---------------------------------------------------------------------------
 export const navItems: PluginNavItem[] = [
   {
     id: "my-plugin",
     path: "/my-plugin/example",
     label: "My Plugin",
-    icon: "Puzzle",
+    icon: "Puzzle",   // use any icon key from the host app's icon registry
     priority: 50,
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Plugin icons — merged into the host app's icon registry at runtime.
-// Add any Lucide icons your navItems reference so they resolve correctly.
-// ---------------------------------------------------------------------------
-export const pluginIcons: Record<string, LucideIcon> = {
-  Puzzle,
-};
-
-// ---------------------------------------------------------------------------
-// Plugin features
-// ---------------------------------------------------------------------------
 export const pluginFeatures: string[] = ["example"];

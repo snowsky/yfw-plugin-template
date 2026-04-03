@@ -6,8 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // @shared → ../../ui/shared  (DRY: shared components without symlinks)
-      "@shared": path.resolve(__dirname, "../../ui/shared"),
+      "@shared": path.resolve(__dirname, "../../shared/ui"),
     },
   },
   server: {
